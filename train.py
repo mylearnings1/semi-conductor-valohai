@@ -33,6 +33,7 @@ def main():
   
   rf = RandomForestClassifier(n_estimators=100, random_state=1,verbose=0)
   rf.fit(x_train, y_train)
+  print(rf.get_params())
   y_pred = rf.predict(x_test)
   print('Accuracy: %.3f' % accuracy_score(y_test, y_pred))
   test_accuracy_rf = accuracy_score(y_test, y_pred)
