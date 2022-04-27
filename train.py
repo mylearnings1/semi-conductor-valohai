@@ -31,7 +31,7 @@ def main():
   x_test = pd.read_csv(x_test_dup,index_col=0)
   y_test = pd.read_csv(y_test_dup,index_col=0)
   
-  rf = RandomForestClassifier(n_estimators=100, random_state=None,verbose=0)
+  rf = RandomForestClassifier(n_estimators=valohai.parameters('n_estimators').value, max_depth=valohai.parameters('max_depth').value)
   rf.fit(x_train, y_train)
   print(rf.get_params())
   y_pred = rf.predict(x_test)
