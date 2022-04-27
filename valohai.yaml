@@ -24,3 +24,10 @@
         default: datum://01806ad7-379d-1bec-23d4-af094908f350
       - name: dataset4
         default: datum://01806ad7-3059-b365-39bd-cf38416b8f81
+    parameters:
+      - name: n_estimators
+        type: integer
+        default: [5,10,50,100,250]
+      - name: max_depth
+        type: integer
+        default: [2,4,8,16,32,None]
