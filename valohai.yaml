@@ -26,7 +26,7 @@
         default: datum://01806ad7-3059-b365-39bd-cf38416b8f81
     parameters:
       - name: n_estimators
-        type: integer
+        type: string
         default: 5,10,50,100,250
         multiple: separate
         multiple-separator: ','
