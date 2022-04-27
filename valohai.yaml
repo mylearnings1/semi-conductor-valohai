@@ -27,7 +27,15 @@
     parameters:
       - name: n_estimators
         type: integer
-        default: [5,10,50,100,250]
+        default: 5,10,50,100,250
+        multiple: separate
+        multiple-separator: ','
       - name: max_depth
-        type: integer
-        default: [2,4,8,16,32,None]
+        type: string
+        default: 2,4,8,16,32,'None'
+        multiple: separate
+        multiple-separator: ','
+       
+  
+
+
