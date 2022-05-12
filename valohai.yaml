@@ -32,5 +32,13 @@
         type: string
         default: 4
   
-
+- endpoint:
+    name: sc-predict
+    description: predict the values
+    image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
+    server-command: uvicorn predict:app --host 0.0.0.0 --port 8000
+    files:
+        - name: model
+          description: Model output file from train.py
+          path: model_rf.jbl
 
