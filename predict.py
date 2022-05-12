@@ -6,7 +6,7 @@ from io import BytesIO
  
 app = FastAPI()
  
-model_path = 'model_rf.jlib'
+model_path = 'model_rf.jbl'
 loaded_model = None
  
 @app.post("{full_path:path}")
