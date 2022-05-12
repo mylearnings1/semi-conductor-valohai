@@ -3,7 +3,7 @@ from zipfile import ZipFile
 
 import pandas as pd
 import tensorflow as tf
-import valohai as vh
+import valohai 
 import joblib
 
 model_path1 = 'model_rf.jbl'
@@ -37,10 +37,10 @@ indexed_results = enumerate(flattened_results, start=1)
 metadata = dict(indexed_results)
 
 for value in metadata.values():
-    with vh.logger() as logger:
+    with valohai.logger() as logger:
         logger.log("result", value)
 
-with open(vh.outputs().path('results.json'), 'w') as f:
+with open(valohai.outputs().path('results.json'), 'w') as f:
     # The JSON library doesn't know how to print
     # NumPy float32 values, so we stringify them
     json.dump(metadata, f, default=lambda v: str(v))
