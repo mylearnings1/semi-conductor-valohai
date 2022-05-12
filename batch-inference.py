@@ -5,6 +5,7 @@ import pandas as pd
 import tensorflow as tf
 import valohai as vh
 import joblib
+import sklearn
 
 with open(vh.inputs('model1').path('model_rf.jbl'), 'r') as f:
     model = joblib.load(f)
