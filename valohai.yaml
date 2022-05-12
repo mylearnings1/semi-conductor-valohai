@@ -35,7 +35,7 @@
     name: Batch Inference
     image: tensorflow/tensorflow:2.5.0
     command:
-    - pip install pandas valohai-utils
+    - pip install pandas valohai-utils joblib
     - python ./batch-inference.py
     inputs:
     - name: model1
