@@ -11,9 +11,6 @@ loaded_model1 = None
 model_path2 = 'fatures_selected.jbl'
 loaded_model2 = None
 
-global loaded_model1
-# Check if model is already loaded
- 
 if not loaded_model1:
     loaded_model1 = joblib.load(model_path1)
 
@@ -21,7 +18,7 @@ inp = valohai.inputs('images').path()
 csv = pd.read_csv(inp)
 csv = csv.drop(columns = ['Time'], axis = 1)
 labels = csv.pop('Pass/Fail')
-global loaded_model2
+
 loaded_model2 = joblib.load(model_path2)
 csv = pd.DataFrame(csv, columns=loaded_model2)
 
