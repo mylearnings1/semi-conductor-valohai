@@ -31,7 +31,18 @@
       - name: max_depth
         type: string
         default: 4
-  
+- step:
+    name: Batch Inference
+    image: valohai/sklearn:1.0
+    command:
+    - pip install pandas valohai-utils
+    - python batch_inference.py
+    inputs:
+    - name: model
+      default: datum://0180b70a-eed8-76eb-d5b1-6af1666a50ea
+    - name: images
+      default: datum://0180b7fd-1512-0c79-fa36-a4557413ab49
+      
 - endpoint:
     name: sc-predict
     description: predict the values
