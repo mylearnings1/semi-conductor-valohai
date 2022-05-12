@@ -6,11 +6,16 @@ import tensorflow as tf
 import valohai as vh
 import joblib
 
-with open(vh.inputs('model').path('model_rf.jbl'), 'r') as f:
+with open(vh.inputs('model1').path('model_rf.jbl'), 'r') as f:
     model = joblib.load(f)
-
-csv = pd.read_csv('data.csv')
+inp = valohai.inputs('images').path()
+csv = pd.read_csv(inp)
+csv = csv.drop(columns = ['Time'], axis = 1)
 labels = csv.pop('Pass/Fail')
+with open(vh.inputs('model2').path('fatures_selected.jbl'), 'r') as g:
+    features = joblib.load(g)
+csv= pd.DataFrame(csv, columns=features)
+
 data = tf.data.Dataset.from_tensor_slices((dict(csv), labels))
 batch_data = data.batch(batch_size=10)
 
