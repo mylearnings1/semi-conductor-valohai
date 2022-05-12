@@ -12,7 +12,7 @@ loaded_model = None
 @app.post("{full_path:path}")
 async def predict(data: UploadFile = File(...)):
     img = pd.read_csv(BytesIO(await data.read()))
-
+    img = img.drop(columns = ['Time'], axis = 1)
     global loaded_model
     # Check if model is already loaded
  
@@ -22,4 +22,4 @@ async def predict(data: UploadFile = File(...)):
     # Predict with the model
     prediction = loaded_model.predict(img)
  
-    return f'Predicted_Flower: {prediction}'
+    return f'Predicted_Value: {prediction}'
