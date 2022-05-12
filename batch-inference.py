@@ -12,7 +12,7 @@ model_path2 = 'fatures_selected.jbl'
 loaded_model2 = None
 
 if not loaded_model1:
-    output_path = valohai.inputs().path('model_rf.jbl')
+    output_path = valohai.inputs('model1').path('model_rf.jbl')
     with open(output_path,'rb') as f:
         loaded_model1 = joblib.load(f)
 
