@@ -5,7 +5,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LassoCV
 import valohai
-
+import joblib
 
 def main():
     # valohai.prepare enables us to update the valohai.yaml configuration file with
