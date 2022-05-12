@@ -82,7 +82,7 @@ def main():
     
     print('Saving preprocessed data')
     features_selected = valohai.outputs().path('fatures_selected.txt')
-    selected_columns.save(features_selected)
+    selected_columns.savetxt(features_selected,delimiter=',')
     path_x_train = valohai.outputs("preprocessed_yield_uci").path('x_train.csv')
     x_train.to_csv(path_x_train)
     path_x_test = valohai.outputs("preprocessed_yield_uci").path('x_test.csv')
