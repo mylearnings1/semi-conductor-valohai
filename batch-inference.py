@@ -32,7 +32,7 @@ csv = pd.DataFrame(csv, columns=loaded_model2)
 data = tf.data.Dataset.from_tensor_slices((dict(csv), labels))
 batch_data = data.batch(batch_size=10)
 
-results = loaded_model1.predict(batch_data)
+results = loaded_model1.predict_batch(batch_data)
 
 # Let's build a dictionary out of the results,
 # e.g. {"1": 0.375, "2": 0.76}
