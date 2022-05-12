@@ -54,7 +54,7 @@ def main():
   plt.savefig(save_path)
   plt.show()
   plt.close()
-  output_path = valohai.outputs().path('model_rf.jlib')
+  output_path = valohai.outputs().path('model_rf.jbl')
   joblib.dump(rf, open(output_path, 'wb'))
   #rf.save(output_path)
 
