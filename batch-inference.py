@@ -22,7 +22,11 @@ csv = pd.read_csv(inp)
 csv = csv.drop(columns = ['Time'], axis = 1)
 labels = csv.pop('Pass/Fail')
 
-loaded_model2 = joblib.load(model_path2)
+if not loaded_model2:
+    output_path = valohai.inputs('model2').path('fatures_selected.jbl')
+    with open(output_path,'rb') as f:
+        loaded_model2 = joblib.load(f)
+
 csv = pd.DataFrame(csv, columns=loaded_model2)
 
 data = tf.data.Dataset.from_tensor_slices((dict(csv), labels))
