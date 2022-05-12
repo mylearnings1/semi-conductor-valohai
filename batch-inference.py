@@ -6,20 +6,29 @@ import tensorflow as tf
 import valohai as vh
 import joblib
 
-with open(vh.inputs('model1').path(), 'r') as f:
-    model = joblib.load(f)
+model_path1 = 'model_rf.jbl'
+loaded_model1 = None
+model_path2 = 'fatures_selected.jbl'
+loaded_model2 = None
+
+global loaded_model1
+# Check if model is already loaded
+ 
+if not loaded_model1:
+    loaded_model1 = joblib.load(model_path1)
+
 inp = valohai.inputs('images').path()
 csv = pd.read_csv(inp)
 csv = csv.drop(columns = ['Time'], axis = 1)
 labels = csv.pop('Pass/Fail')
-with open(vh.inputs('model2').path(), 'r') as g:
-    features = joblib.load(g)
-csv= pd.DataFrame(csv, columns=features)
+global loaded_model2
+loaded_model2 = joblib.load(model_path2)
+csv = pd.DataFrame(csv, columns=loaded_model2)
 
 data = tf.data.Dataset.from_tensor_slices((dict(csv), labels))
 batch_data = data.batch(batch_size=10)
 
-results = model.predict(batch_data)
+results = loaded_model1.predict(batch_data)
 
 # Let's build a dictionary out of the results,
 # e.g. {"1": 0.375, "2": 0.76}
