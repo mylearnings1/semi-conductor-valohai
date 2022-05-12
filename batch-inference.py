@@ -7,13 +7,13 @@ import valohai as vh
 import joblib
 import sklearn
 
-with open(vh.inputs('model1').path('model_rf.jbl'), 'r') as f:
+with open(vh.inputs('model1').path(), 'r') as f:
     model = joblib.load(f)
 inp = valohai.inputs('images').path()
 csv = pd.read_csv(inp)
 csv = csv.drop(columns = ['Time'], axis = 1)
 labels = csv.pop('Pass/Fail')
-with open(vh.inputs('model2').path('fatures_selected.jbl'), 'r') as g:
+with open(vh.inputs('model2').path(), 'r') as g:
     features = joblib.load(g)
 csv= pd.DataFrame(csv, columns=features)
 
