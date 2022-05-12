@@ -38,7 +38,10 @@
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
     server-command: uvicorn predict:app --host 0.0.0.0 --port 8000
     files:
-        - name: model
+        - name: model1
           description: Model output file from train.py
           path: model_rf.jbl
+        - name: model2
+          description: Model output file from pre-process.py
+          path: fatures_selected.jbl
 
